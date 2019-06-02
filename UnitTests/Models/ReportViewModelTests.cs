@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HW1c.Models;
+using System.Collections.Generic;
 
 namespace UnitTests.Models
 {
@@ -62,6 +63,25 @@ namespace UnitTests.Models
             // Assert
             // Should NOT be null
             Assert.IsNotNull(myLogViewModel);
+
+        }
+
+        [TestMethod]
+        public void ReportViewModel_LogViewModel_Set_Default_Should_Pass()
+        {
+
+            // Arrange
+            var myReportViewModel = new ReportViewModel();
+            var myTestModel = new LogViewModel();
+            myReportViewModel.LogViewModel = myTestModel;
+
+            // Act
+            var result = myReportViewModel.LogViewModel;
+
+            // Assert
+            // Should NOT be null
+            Assert.AreEqual(myTestModel, result);
+
 
         }
 
