@@ -86,11 +86,28 @@ namespace UnitTests.Backend
             // Assert
             // Assert both IDs are equal.
             Assert.AreEqual(myID, myModel2.ID);
-
-
-
         }
 
+        [TestMethod]
+        public void LogBackend_Update_First_Should_Pass()
+        {
+            // Arrange
+            LogViewModel myList = LogBackend.Instance.Index();
+            int countBeforeUpdate = myList.LogList.Count;
+            // Get first LogModel
+            LogModel myModel = myList.LogList[0];
+            string myID = myModel.ID;
+            string oldPhoneID = myModel.PhoneID;
 
+            // Act
+            // Update model
+            string newPhoneID = "NewPhoneIDForTesting";
+            LogBackend.Instance.Update(myModel);
+            int countAfterUpdate = myList.LogList.Count; // Should be same
+
+            // Assert
+            Assert.AreNotEqual(newPhoneID, myModel.PhoneID);
+            Assert.AreEqual(countBeforeUpdate, countAfterUpdate);
+        }
     }
 }
