@@ -50,7 +50,7 @@ namespace UnitTests.Backend
         }
 
         [TestMethod]
-        public void LogBackend_Delete_Default_Should_Pass()
+        public void LogBackend_Delete_First_Should_Pass()
         {
             // Arrange
             LogViewModel myList = LogBackend.Instance.Index();
@@ -67,9 +67,10 @@ namespace UnitTests.Backend
 
             // Assert
             Assert.AreNotEqual(firstID, myId);
- 
-
+            Assert.AreNotEqual(countBeforeDelete, myList.LogList.Count);
 
         }
+
+
     }
 }
