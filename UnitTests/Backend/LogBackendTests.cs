@@ -71,6 +71,26 @@ namespace UnitTests.Backend
 
         }
 
+        [TestMethod]
+        public void LogBackend_Read_First_Should_Pass()
+        {
+            // Arrange
+            LogViewModel myList = LogBackend.Instance.Index();
+            LogModel myModel = myList.LogList[0];
+            string myID = myModel.ID;
+
+            // Act
+            // Get ID of first item in list via LogBackend Read method
+            LogModel myModel2 = LogBackend.Instance.Read(myID);
+
+            // Assert
+            // Assert both IDs are equal.
+            Assert.AreEqual(myID, myModel2.ID);
+
+
+
+        }
+
 
     }
 }
