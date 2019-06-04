@@ -48,5 +48,28 @@ namespace UnitTests.Backend
             // Assert
             Assert.AreEqual("TestingPhone", myData.PhoneID);
         }
+
+        [TestMethod]
+        public void LogBackend_Delete_Default_Should_Pass()
+        {
+            // Arrange
+            LogViewModel myList = LogBackend.Instance.Index();
+            int countBeforeDelete = myList.LogList.Count;
+
+            // Get ID of first item in list
+            string myId = myList.LogList[0].ID;
+
+            // Act
+            // Delete ID
+            LogBackend.Instance.Delete(myId);
+            // Get id of list that's now first in the list
+            string firstID = myList.LogList[0].ID;
+
+            // Assert
+            Assert.AreNotEqual(firstID, myId);
+ 
+
+
+        }
     }
 }
