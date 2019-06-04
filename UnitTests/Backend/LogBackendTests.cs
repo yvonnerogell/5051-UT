@@ -34,5 +34,19 @@ namespace UnitTests.Backend
             // Should have 4 rows
             Assert.AreEqual(4, myData.LogList.Count);
         }
+
+        [TestMethod]
+        public void LogBackend_Create_Default_Should_Pass()
+        {
+            // Arrange
+            LogModel myModel = new LogModel();
+            myModel.PhoneID = "TestingPhone";
+
+            // Act
+            LogModel myData = LogBackend.Instance.Create(myModel);
+
+            // Assert
+            Assert.AreEqual("TestingPhone", myData.PhoneID);
+        }
     }
 }
